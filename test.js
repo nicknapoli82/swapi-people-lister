@@ -18,6 +18,12 @@ document.getElementById("list").addEventListener("mouseout", (e) => {
     }
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Above is really just the raw order of things being called. Below is the meat and potatos //
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+// fetchPeople() grabs a number of json objects from https://swapi.co/ one request at a time
+// stores into global getNamed all the available data from fetches made... Thats it
 async function fetchPeople() {
     let data = [];
     let url = "https://swapi.co/api/people/";
@@ -40,6 +46,8 @@ async function fetchPeople() {
     }
 }
 
+// As fetches are made from fetchPeople() this is called to continuously populate more items of
+// available people who can be observed
 function populateNames(nL) {
     //Using <ul>
     //Each name in nL will have a <li>
@@ -49,6 +57,7 @@ function populateNames(nL) {
     document.getElementById("list").innerHTML = `<ul>${list}</ul>`;
 }
 
+// Grabs the li from the 'list' html id and creates the right hand side of the page viewed 
 function toNamedValue(e) {
     if (e.target.nodeName !== 'LI') return;
     let result = "";
