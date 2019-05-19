@@ -1,0 +1,22 @@
+#container {
+    display: flex
+}
+
+#container div{
+    width: 50%;
+}
+
+#named-value span {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.name-value {
+    align-self: flex-end;
+    text-align: right;
+}
+
