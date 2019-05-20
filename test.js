@@ -37,12 +37,21 @@ async function fetchPeople() {
 	return null;
     };
 
-    while(url !== null) {
-	let response = await fetch(url);
-	let temp = await response.json();
-	temp.results.map((d) => data.push(d));
-	url = temp.next;
-	populateNames(data);
+    let response = await fetch(url);
+    response = await response.json();
+    response.results.map((d) => data.push(d));
+    populateNames(data);
+
+    console.log(response.count / data.length);
+    for (let i = 2, end = Math.ceil(response.count / data.length); i <= end; i++) {
+	additionalFetch(i);
+    }
+
+    async function additionalFetch(index) {
+	let response = await fetch(url + `?page=${index}`);
+	response = await response.json();
+	response.results.map((d) => data.push(d));
+	populateNames(data);	
     }
 }
 

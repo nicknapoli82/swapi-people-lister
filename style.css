@@ -1,8 +1,14 @@
-#container {
-    display: flex
+ul {
+    margin: 0;
 }
 
-#container div{
+#container {
+    display: flex;
+    max-height: 90vh;
+}
+
+#container div {
+    overflow-y: auto;
     width: 50%;
 }
 
@@ -16,7 +22,6 @@
 }
 
 .name-value {
-    align-self: flex-end;
     text-align: right;
 }
 
