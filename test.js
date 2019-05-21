@@ -41,7 +41,7 @@ async function fetchPeople() {
 
     let response = await fetch(url, { cache: 'force-cache' });
     response = await response.json();
-    response.results.map((d) => data.push(d));
+    data.push(...response.results);
     populateNames(data);
 
     for (let i = 2, end = Math.ceil(response.count / data.length); i <= end; i++) {
@@ -51,7 +51,7 @@ async function fetchPeople() {
     async function additionalFetch(index) {
 	let response = await fetch(url + `?page=${index}`, { cache: 'force-cache' });
 	response = await response.json();
-	response.results.map((d) => data.push(d));
+	data.push(...response.results);
 	populateNames(data);	
     }
 }
