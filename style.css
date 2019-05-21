@@ -11,6 +11,7 @@ li {
     text-align: right;
     background-color: goldenrod;
     list-style: none;
+    cursor: pointer;
 }
 
 select {
